@@ -90,5 +90,9 @@ function showContentContacts() {
 window.onpopstate = function (event){
     const pageName = window.location.hash.substring(1);
     showPages(pageName);
-
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    const pageName = window.location.hash.substring(1);
+    showPages(pageName || 'news');
+});
