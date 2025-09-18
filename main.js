@@ -15,6 +15,11 @@ function goToPageContacts(){
     showPages("contacts")
 }
 
+function goToStartPage(){
+    history.pushState({page: "news"}, ``, `${basePath}`);
+    showPages("news")
+}
+
 function showPages(pageName){
     switch(pageName){
         case "":
@@ -88,7 +93,6 @@ function showContentContacts() {
     content.appendChild(text);
 }
 
-
 window.onpopstate = function (event){
     if (event.state && event.state.page) {
         showPages(event.state.page);
@@ -98,8 +102,6 @@ window.onpopstate = function (event){
         showPages(page || 'news');
     }
 };
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const pageName = window.location.hash.substring(1);
