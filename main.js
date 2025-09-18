@@ -1,15 +1,17 @@
+const basePath = "/website/"
+
 function goToPageNews(){
-    history.pushState({page: "news"}, ``, "/news");
+    history.pushState({page: "news"}, ``, `${basePath}news`);
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({page: "services"}, ``, "/services");
+    history.pushState({page: "services"}, ``, `${basePath}services`);
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({page: "contacts"}, ``, "/contacts");
+    history.pushState({page: "contacts"}, ``, `${basePath}contacts`);
     showPages("contacts")
 }
 
