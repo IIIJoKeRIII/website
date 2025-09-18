@@ -93,6 +93,6 @@ window.onpopstate = function (event){
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    const pageName = window.location.hash.substring(1);
+    const pageName = path.replace(/^#\/?|\/$/g, '');
     showPages(pageName || 'news');
 });
