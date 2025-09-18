@@ -1,97 +1,96 @@
-document.addEventListener('DOMContentLoaded', function() {
-    visibility_of_sections('news');
+function goToPageNews(){
+    history.pushState({}, ``, "/news");
+    showPages("news")
+}
 
-    document.querySelector('.news').addEventListener('click', function() {
-        visibility_of_sections('news');
-    });
+function goToPageServices(){
+    history.pushState({}, ``, "/services");
+    showPages("services")
+}
 
-    document.querySelector('.services').addEventListener('click', function() {
-        visibility_of_sections('services');
-    });
+function goToPageContacts(){
+    history.pushState({}, ``, "/contacts");
+    showPages("contacts")
+}
 
-    document.querySelector('.contacts').addEventListener('click', function() {
-        visibility_of_sections('contacts');
-    });
-});
-
-function visibility_of_sections(showSection) {
-    const newsSection = document.getElementById('newsSection');
-    const servicesSection = document.getElementById('servicesSection');
-    const contactSection = document.getElementById('contactSection');
-
-    newsSection.style.display = 'none';
-    servicesSection.style.display = 'none';
-    contactSection.style.display = 'none';
-
-    switch (showSection) {
-        case 'news':
-            newsSection.style.display = 'block';
-            renderNews();
+function showPages(pageName){
+    switch(pageName){
+        case "":
+            showContentNews()
             break;
-        case 'services':
-            servicesSection.style.display = 'block';
-            renderServices();
+        case "news":
+            showContentNews()
             break;
-        case 'contacts':
-            contactSection.style.display = 'block';
-            renderContacts();
+        case "services":
+            showContentServices()
+            break;
+        case "contacts":
+            showContentContacts()
             break;
         default:
-            newsSection.style.display = 'block';
-            renderNews();
+            document.getElementById("content").innerHTML = "<h1 class='text-center'> Такой страницы нет :(";
     }
 }
 
-function renderNews() {
-    const newsContainer = document.getElementById('news-container');
-    newsContainer.innerHTML = '';
+function showContentNews() {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
+        const newsSection = document.createElement("section");
+        newsSection.className = "container";
+        newsSection.id = "newsSection";
 
-    newsData.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'col-4 mb-4';
-        card.innerHTML = `
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5>${item.title}</h5>
-                        <p class="card-text">${item.text}</p>
-                        <a href="#" class="btn btn-primary">Узнать больше »</a>
+        const zag = document.createElement("h1");
+        zag.className = "text-center";
+        zag.innerHTML = "Новости";
+
+        const row = document.createElement("div");
+        row.className = "row";
+
+        newsData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'col-md-4 mb-4';
+                card.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5>${item.title}</h5>
+                            <p class="card-text">${item.text}</p>
+                            <a href="#" class="btn btn-primary">Узнать больше »</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            ${item.date} ${item.comments}
+                        </div>
                     </div>
-                    <div class="card-footer text-muted">
-                        ${item.date} ${item.comments}
-                    </div>
-                </div>
-            `;
-        newsContainer.appendChild(card);
-    });
+                `;
+            row.appendChild(card);
+        });
+        newsSection.appendChild(zag);
+        newsSection.appendChild(row);
+        content.appendChild(newsSection);
 }
 
-function renderContacts() {
-    const contactsContainer = document.getElementById('contacts-container');
-    contactsContainer.innerHTML = '';
-
-    contacts.forEach(item => {
-        const contact = document.createElement('div');
-        contact.className = 'col-md-12';
-        contact.innerHTML = `
-        <h3>${item.title}</h3>
-        <p>${item.text}</p>`
-        contactsContainer.appendChild(contact);
-    })
+function showContentServices() {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
+    const text = document.createElement("h1")
+        text.className = "text-center";
+        text.innerHTML = "Услуги"
+       content.appendChild(text);
 }
-document.querySelector('.contacts').addEventListener('click', renderContacts);
 
-function renderServices() {
-    const servicesContainer = document.getElementById('services-container');
-    servicesContainer.innerHTML = '';
-
-    services.forEach(item => {
-        const module = document.createElement('div');
-        module.className = 'col-md-12';
-        module.innerHTML = `
-        <div class="mb-5">
-            <h3>${item.title}</h3>
-            <p>${item.text}</p>
-        </div>`
-        servicesContainer.appendChild(module);
-    })
+function showContentContacts() {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
+    const text = document.createElement("h1")
+    text.className = "text-center";
+    text.innerHTML = "Контакты"
+    content.appendChild(text);
 }
+
+
+window.onpopstate = function (event){
+    console.log('Current path:', window.location.pathname);
+    console.log('Full URL:', window.location.href);
+    const pageName = window.location.pathname.split[1];
+    showPages(pageName);
+
+};

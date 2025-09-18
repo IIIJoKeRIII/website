@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - НПО "Курганприбор"</title>
+    <link href="bootstrap.css" rel="stylesheet">
     <script defer src="main.js"></script>
     <script defer src="data.js"></script>
-    <link href="bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <header class="bg-primary text-white header-bg">
@@ -16,30 +16,14 @@
                 <img src="logo.png" alt="Логотип НПО Курганприбор" width="50" height="50" class="d-inline-block align-top">
                 НПО "Курганприбор"
             </a>
-            <input type="button" class="news" value="Новости">
-            <input type="button" class="services" value="Услуги">
-            <input type="button" class="contacts" value="Контакты">
+            <button onclick="goToPageNews()" class = "nav-link" style="margin-right: 1em">Новости</button>
+            <button onclick="goToPageServices()" class = "nav-link" style="margin-right: 1em">Услуги</button>
+            <button onclick="goToPageContacts()" class = "nav-link" style="margin-right: 1em">Контакты</button>
         </nav>
     </div>
 </header>
 
-<section id="newsSection" class="container my-5">
-    <h2 class="text-center mb-4">Новости</h2>
-        <div class="row" id="news-container">
-        </div>
-</section>
-
-<section id="servicesSection" class="container my-5">
-    <h2 class="text-center mb-4">Услуги</h2>
-    <div class="row" id="services-container">
-    </div>
-</section>
-
-<section id="contactSection" class="container my-5">
-    <h2 class="text-center mb-4">Контакты</h2>
-    <div class="row" id="contacts-container">
-    </div>
-</section>>
+<div id="content"></div>
 
 </body>
 </html>

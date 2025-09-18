@@ -36,15 +36,14 @@ const newsData = [
         comments: "Комментариев нет"
     }
 ];
-localStorage.setItem("newsData", JSON.stringify(newsData));
 
 const services =[
     {
         title: "Литейное производство",
         text: "Производственные и технологические возможности предприятия обеспечивают разработку технологических процессов и оснастки для производства литых деталей из алюминиевых сплавов и стали.",
     }
+
 ]
-localStorage.setItem("services", JSON.stringify(services));
 
 const contacts =[
     {
@@ -52,4 +51,7 @@ const contacts =[
         text: "Россия, 640007, г. Курган, ул. Ястржембского, 41а",
     }
 ]
+
 localStorage.setItem("contacts", JSON.stringify(contacts));
+localStorage.setItem("newsData", JSON.stringify(newsData));
+localStorage.setItem("services", JSON.stringify(services));
