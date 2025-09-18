@@ -85,9 +85,7 @@ function showContentContacts() {
     content.appendChild(text);
 }
 
-
-window.onpopstate = function (event){
-
-    const path = window.location.pathname.replace(/^\//, '');
-    showPages(path);
-};
+window.onpopstate = function(event){
+    const pageName = window.location.pathname;
+    showPages(pageName);
+}
