@@ -1,21 +1,21 @@
 function goToPageNews(){
-    history.pushState({}, ``, "index.html/news");
+    history.pushState({}, ``, "/news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, "index.html/services");
+    history.pushState({}, ``, "/services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, "index.html/contacts");
+    history.pushState({}, ``, "/contacts");
     showPages("contacts")
 }
 
 function showPages(pageName){
     switch(pageName){
-        case "":
+        case "/":
             showContentNews()
             break;
         case "news":
