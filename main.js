@@ -88,9 +88,11 @@ function showContentContacts() {
 
 
 window.onpopstate = function (event){
-    console.log('Current path:', window.location.pathname);
-    console.log('Full URL:', window.location.href);
-    const pageName = window.location.pathname.split[1];
+    const pageName = window.location.pathname;
     showPages(pageName);
-
 };
+
+window.onload = function (event) {
+    const pageName = window.location.pathname;
+    showPages(pageName);
+}
