@@ -91,8 +91,3 @@ window.onpopstate = function (event){
     const pageName = window.location.href.split('#')[0];
     showPages(pageName);
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-    const pageName = window.location.hash.substring(1)
-    showPages(pageName || 'news');
-});
