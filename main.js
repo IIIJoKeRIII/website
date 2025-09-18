@@ -1,15 +1,15 @@
 function goToPageNews(){
-    history.pushState({}, ``, "#/news");
+    history.pushState({}, ``, "/news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, "#/services");
+    history.pushState({}, ``, "/services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, "#/contacts");
+    history.pushState({}, ``, "/contacts");
     showPages("contacts")
 }
 
@@ -88,5 +88,8 @@ function showContentContacts() {
 
 
 window.onpopstate = function (event){
-    showPages(window.location.hash);
+
+    const pageName = window.location.pathname.split[1];
+    showPages(pageName);
+
 };
