@@ -17,13 +17,13 @@ function showPages(pageName){
 
     switch(pageName){
         case "":
-        case window.location.pathname + "/news":
+        case "news":
             showContentNews()
             break;
-        case window.location.pathname + "/services":
+        case "services":
             showContentServices()
             break;
-        case window.location.pathname + "/contacts":
+        case "contacts":
             showContentContacts()
             break;
         default:
@@ -86,6 +86,7 @@ function showContentContacts() {
 }
 
 window.onpopstate = function(event){
-    const pageName = window.location.pathname;
+    const url = new URL(window.location.href);
+    const pageName = url.pathname.substring(1);
     showPages(pageName);
 }
