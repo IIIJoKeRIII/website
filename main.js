@@ -1,18 +1,15 @@
 function goToPageNews(){
-    history.pushState({}, ``, "#news");
-    history.pushState("", document.title, window.location.pathname);
+    history.pushState({page: "news"}, ``, "/news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, "#services");
-    history.pushState("", document.title, window.location.pathname);
+    history.pushState({page: "services"}, ``, "/services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, "#contacts");
-    history.pushState("", document.title, window.location.pathname);
+    history.pushState({page: "contacts"}, ``, "/contacts");
     showPages("contacts")
 }
 
@@ -91,9 +88,16 @@ function showContentContacts() {
 
 
 window.onpopstate = function (event){
-    const pageName = window.location.hash.substring(1);
-    showPages(pageName);
+    if (event.state && event.state.page) {
+        showPages(event.state.page);
+    } else {
+        const path = window.location.pathname;
+        const page = path.substring(path.lastIndexOf('/') + 1);
+        showPages(page || 'news');
+    }
 };
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const pageName = window.location.hash.substring(1);
