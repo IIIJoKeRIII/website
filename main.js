@@ -88,6 +88,5 @@ function showContentContacts() {
 
 
 window.onpopstate = function (event){
-    const pageName = window.location.hash;
-    showPages(pageName);
+    showPages(window.location.hash);
 };
