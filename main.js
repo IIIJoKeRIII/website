@@ -1,23 +1,23 @@
 function goToPageNews(){
-    history.pushState({}, ``, "/news");
+    history.pushState({}, ``, "#/news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, "/services");
+    history.pushState({}, ``, "#/services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, "/contacts");
+    history.pushState({}, ``, "#/contacts");
     showPages("contacts")
 }
 
 function showPages(pageName){
-    switch(pageName){
-        case "/website":
-            showContentNews()
-            break;
+
+    const delHash = pageName.replace(/^#\/?|\/$/g, '');
+    switch(delHash){
+        case "":
         case "news":
             showContentNews()
             break;
@@ -88,11 +88,6 @@ function showContentContacts() {
 
 
 window.onpopstate = function (event){
-    const pageName = window.location.pathname;
+    const pageName = window.location.hash;
     showPages(pageName);
 };
-
-window.onload = function (event) {
-    const pageName = window.location.pathname;
-    showPages(pageName);
-}
