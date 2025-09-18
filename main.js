@@ -1,22 +1,23 @@
 function goToPageNews(){
-    history.pushState({}, ``, window.location.pathname + "/news");
+    history.pushState({}, ``, "#news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, window.location.pathname + "/services");
+    history.pushState({}, ``, "#services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, window.location.pathname + "/contacts");
+    history.pushState({}, ``, "#contacts");
     showPages("contacts")
 }
 
 function showPages(pageName){
-
     switch(pageName){
         case "":
+            showContentNews()
+            break;
         case "news":
             showContentNews()
             break;
@@ -34,21 +35,21 @@ function showPages(pageName){
 function showContentNews() {
     const content = document.getElementById("content");
     content.innerHTML = "";
-        const newsSection = document.createElement("section");
-        newsSection.className = "container";
-        newsSection.id = "newsSection";
+    const newsSection = document.createElement("section");
+    newsSection.className = "container";
+    newsSection.id = "newsSection";
 
-        const zag = document.createElement("h1");
-        zag.className = "text-center";
-        zag.innerHTML = "Новости";
+    const zag = document.createElement("h1");
+    zag.className = "text-center";
+    zag.innerHTML = "Новости";
 
-        const row = document.createElement("div");
-        row.className = "row";
+    const row = document.createElement("div");
+    row.className = "row";
 
-        newsData.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'col-md-4 mb-4';
-                card.innerHTML = `
+    newsData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'col-md-4 mb-4';
+        card.innerHTML = `
                     <div class="card h-100">
                         <div class="card-body">
                             <h5>${item.title}</h5>
@@ -60,20 +61,20 @@ function showContentNews() {
                         </div>
                     </div>
                 `;
-            row.appendChild(card);
-        });
-        newsSection.appendChild(zag);
-        newsSection.appendChild(row);
-        content.appendChild(newsSection);
+        row.appendChild(card);
+    });
+    newsSection.appendChild(zag);
+    newsSection.appendChild(row);
+    content.appendChild(newsSection);
 }
 
 function showContentServices() {
     const content = document.getElementById("content");
     content.innerHTML = "";
     const text = document.createElement("h1")
-        text.className = "text-center";
-        text.innerHTML = "Услуги"
-       content.appendChild(text);
+    text.className = "text-center";
+    text.innerHTML = "Услуги"
+    content.appendChild(text);
 }
 
 function showContentContacts() {
@@ -85,8 +86,9 @@ function showContentContacts() {
     content.appendChild(text);
 }
 
-window.onpopstate = function(event){
-    const url = new URL(window.location.href);
-    const pageName = url.pathname.substring(1);
+
+window.onpopstate = function (event){
+    const pageName = window.location.hash.substring(1);
     showPages(pageName);
-}
+
+};
