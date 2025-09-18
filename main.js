@@ -18,13 +18,13 @@ function showPages(pageName){
     const delHash = pageName.replace(/^#\/?|\/$/g, '');
     switch(delHash){
         case "":
-        case "website/news":
+        case "/news":
             showContentNews()
             break;
-        case "website/services":
+        case "/services":
             showContentServices()
             break;
-        case "website/contacts":
+        case "/contacts":
             showContentContacts()
             break;
         default:
