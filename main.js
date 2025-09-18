@@ -1,15 +1,15 @@
 function goToPageNews(){
-    history.pushState({}, ``, window.location.pathname + "news");
+    history.pushState({}, ``, window.location.pathname + "/news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, window.location.pathname + "services");
+    history.pushState({}, ``, window.location.pathname + "/services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, window.location.pathname + "contacts");
+    history.pushState({}, ``, window.location.pathname + "/contacts");
     showPages("contacts")
 }
 
@@ -17,13 +17,13 @@ function showPages(pageName){
 
     switch(pageName){
         case "":
-        case "news":
+        case window.location.pathname + "/news":
             showContentNews()
             break;
-        case "services":
+        case window.location.pathname + "/services":
             showContentServices()
             break;
-        case "contacts":
+        case window.location.pathname + "/contacts":
             showContentContacts()
             break;
         default:
