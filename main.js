@@ -15,7 +15,7 @@ function goToPageContacts(){
 
 function showPages(pageName){
     switch(pageName){
-        case "/":
+        case "/website":
             showContentNews()
             break;
         case "news":
