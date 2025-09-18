@@ -88,7 +88,7 @@ function showContentContacts() {
 
 
 window.onpopstate = function (event){
-    const pageName = window.location.hash.substring(1);
+    const pageName = window.location.href.split('#')[0];
     showPages(pageName);
 };
 
