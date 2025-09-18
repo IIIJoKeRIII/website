@@ -1,15 +1,15 @@
 function goToPageNews(){
-    history.pushState({}, ``, "#/news");
+    history.pushState({}, ``, "#website/news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, "#/services");
+    history.pushState({}, ``, "#website/services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, "#/contacts");
+    history.pushState({}, ``, "#website/contacts");
     showPages("contacts")
 }
 
@@ -18,13 +18,13 @@ function showPages(pageName){
     const delHash = pageName.replace(/^#\/?|\/$/g, '');
     switch(delHash){
         case "":
-        case "news":
+        case "website/news":
             showContentNews()
             break;
-        case "services":
+        case "website/services":
             showContentServices()
             break;
-        case "contacts":
+        case "website/contacts":
             showContentContacts()
             break;
         default:
