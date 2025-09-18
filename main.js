@@ -1,15 +1,18 @@
 function goToPageNews(){
     history.pushState({}, ``, "#news");
+    history.pushState("", document.title, window.location.pathname);
     showPages("news")
 }
 
 function goToPageServices(){
     history.pushState({}, ``, "#services");
+    history.pushState("", document.title, window.location.pathname);
     showPages("services")
 }
 
 function goToPageContacts(){
     history.pushState({}, ``, "#contacts");
+    history.pushState("", document.title, window.location.pathname);
     showPages("contacts")
 }
 
