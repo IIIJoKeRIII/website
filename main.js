@@ -1,21 +1,21 @@
 function goToPageNews(){
-    history.pushState({}, ``, "news");
+    history.pushState({}, ``, window.location.pathname + "news");
     showPages("news")
 }
 
 function goToPageServices(){
-    history.pushState({}, ``, "services");
+    history.pushState({}, ``, window.location.pathname + "services");
     showPages("services")
 }
 
 function goToPageContacts(){
-    history.pushState({}, ``, "contacts");
+    history.pushState({}, ``, window.location.pathname + "contacts");
     showPages("contacts")
 }
 
 function showPages(pageName){
 
-    switch(delHash){
+    switch(pageName){
         case "":
         case "news":
             showContentNews()
