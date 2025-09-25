@@ -104,17 +104,21 @@ window.onpopstate = function (event){
 };
 
 document.addEventListener('DOMContentLoaded', function() {
+    let pageShow;
     if (sessionStorage.redirect) {
         const requestedPath = sessionStorage.redirect;
         console.log(requestedPath);
         sessionStorage.removeItem('redirect');
-        if (requestedPath == '/website/news') {
+
+        pageShow = requestedPath.substring(requestedPath.lastIndexOf('/') + 1);
+
+        if (pageShow == 'news') {
             goToPageNews();
         }
-        else if (requestedPath == '/website/contacts') {
+        else if (pageShow ==  'contacts') {
             goToPageContacts();
         }
-        else if (requestedPath == '/website/services') {
+        else if (pageShow == 'services') {
             goToPageServices();
         }
     }
