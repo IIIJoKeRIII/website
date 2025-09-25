@@ -108,9 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const requestedPath = sessionStorage.redirect;
         console.log(requestedPath);
         sessionStorage.removeItem('redirect');
-        showPages(requestedPath);
+        if (requestedPath == '/website/news') {
+            goToPageNews();
+        }
+        else if (requestedPath == '/website/contacts') {
+            goToPageContacts();
+        }
+        else if (requestedPath == '/website/services') {
+            goToPageServices();
+        }
     }
-
     const pageName = window.location.hash.substring(1);
     showPages(pageName || 'news');
 });
