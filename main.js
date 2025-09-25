@@ -106,6 +106,7 @@ window.onpopstate = function (event){
 document.addEventListener('DOMContentLoaded', function() {
     if (sessionStorage.redirect) {
         const requestedPath = sessionStorage.redirect;
+        console.log(requestedPath);
         sessionStorage.removeItem('redirect');
         showPages(requestedPath);
     }
