@@ -20,6 +20,10 @@ function goToStartPage(){
     showPages("news")
 }
 
+function goToErrorPage(){
+    showPages("error")
+}
+
 function showPages(pageName){
     switch(pageName){
         case "":
@@ -34,7 +38,7 @@ function showPages(pageName){
         case "contacts":
             showContentContacts()
             break;
-        default:
+        case "error":
             document.getElementById("content").innerHTML = "<h1 class='text-center'> Такой страницы нет :(";
     }
 }
@@ -122,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             goToPageServices();
         }
         else{
-            window.location.href ='/website/404.html';
+            goToErrorPage();
         }
     }
     else{
