@@ -121,6 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (pageShow == 'services') {
             goToPageServices();
         }
+        else{
+            window.location.href ='/website/404.html';
+        }
     }
     else{
         const pageName = window.location.hash.substring(1);
