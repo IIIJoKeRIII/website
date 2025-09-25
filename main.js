@@ -104,12 +104,12 @@ window.onpopstate = function (event){
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    const pageName = window.location.hash.substring(1);
-    showPages(pageName || 'news');
-
     if (sessionStorage.redirect) {
         const requestedPath = sessionStorage.redirect;
         sessionStorage.removeItem('redirect');
         showPages(requestedPath);
     }
+
+    const pageName = window.location.hash.substring(1);
+    showPages(pageName || 'news');
 });
