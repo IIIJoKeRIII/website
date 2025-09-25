@@ -118,6 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
             goToPageServices();
         }
     }
-    const pageName = window.location.hash.substring(1);
-    showPages(pageName || 'news');
+    else{
+        const pageName = window.location.hash.substring(1);
+        showPages(pageName || 'news');
+    }
 });
