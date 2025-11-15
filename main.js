@@ -57,11 +57,12 @@ function showContentNews() {
     const row = document.createElement("div");
     row.className = "row";
 
-    let id_news = 0
+    let id = 0;
+
     newsData.forEach(item => {
         const card = document.createElement('div');
         card.className = 'col-md-4 mb-4';
-        card.id = id_news++
+        card.id = id++;
         card.innerHTML = `
                     <div class="card h-100">
                         <div class="card-body">
