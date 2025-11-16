@@ -21,7 +21,7 @@ function goToStartPage(){
 }
 
 function goToIndexNews(index){
-    history.pushState({}, ``, `${basePath}/news/${index}`);
+    history.pushState({page: "index-news"}, ``, `${basePath}news/${index}`);
     searchNews(index)
 }
 
@@ -30,11 +30,6 @@ function goToErrorPage(){
 }
 
 function showPages(pageName){
-
-    if(!isNaN(pageName)){
-        goToIndexNews(Number(pageName));
-        return;
-    }
 
     switch(pageName){
         case "":
@@ -47,6 +42,9 @@ function showPages(pageName){
             showContentServices()
             break;
         case "contacts":
+            showContentContacts()
+            break;
+        case "index-news":
             showContentContacts()
             break;
         case "error":
