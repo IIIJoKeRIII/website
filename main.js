@@ -78,7 +78,7 @@ function showContentNews() {
                         <div class="card-body">
                             <h5>${item.title}</h5>
                             <p class="card-text">${item.text}</p>
-                            <a href="#" class="btn btn-primary" onclick="openNews(${index})">Узнать больше »</a>
+                            <a href="#" class="btn btn-primary" onclick="searchNews(${index})">Узнать больше »</a>
                         </div>
                         <div class="card-footer text-muted">
                             ${item.date} ${item.comments}
