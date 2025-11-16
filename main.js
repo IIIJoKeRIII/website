@@ -50,6 +50,7 @@ function showPages(pageName){
 }
 
 /*----------Генерируем страницы Новости, контакты, услуги----------*/
+let max_index = 0
 
 function showContentNews() {
     const content = document.getElementById("content");
@@ -64,9 +65,9 @@ function showContentNews() {
 
     const row = document.createElement("div");
     row.className = "row";
-
     newsData.forEach((item, index) => {
         const card = document.createElement('div');
+        max_index++
         card.className = 'col-md-4 mb-4';
         card.innerHTML = `
                     <div class="card h-100">
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (pageShow == 'services') {
             goToPageServices();
         }
-        else if (pageShow >= 0) {
+        else if (pageShow >= 0 && pageShow <= max_index) {
             goToIndexNews(Number(pageShow));
         }
         else{
