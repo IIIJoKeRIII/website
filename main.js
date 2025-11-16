@@ -116,6 +116,7 @@ function searchNews(index){
         <h1>${news.title}</h1>
         <p class="text-muted">${news.date}</p>
         <p>${news.text}</p>
+        <p>${news.fullText}</p>
         </section>`
         ;
 }
