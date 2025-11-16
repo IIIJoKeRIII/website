@@ -117,7 +117,11 @@ function searchNews(index){
         <p class="text-muted">${news.date}</p>
         <p>${news.text}</p>
         <p>${news.fullText}</p>
-        </section>`
+        </section>
+        <section class="container">
+        <p class="text-muted">Комментарии: </p> 
+        </section>
+        `
         ;
 }
 
