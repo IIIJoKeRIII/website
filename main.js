@@ -20,11 +20,22 @@ function goToStartPage(){
     showPages("news")
 }
 
+function goToIndexNews(index){
+    history.pushState({}, ``, `${basePath}/news/${index}`);
+    searchNews(index)
+}
+
 function goToErrorPage(){
     showPages("error")
 }
 
 function showPages(pageName){
+
+    if(!isNaN(pageName)){
+        goToIndexNews(Number(pageName));
+        return;
+    }
+
     switch(pageName){
         case "":
             showContentNews()
@@ -43,6 +54,8 @@ function showPages(pageName){
     }
 }
 
+/*----------Генерируем страницы Новости, контакты, услуги----------*/
+
 function showContentNews() {
     const content = document.getElementById("content");
     content.innerHTML = "";
@@ -57,18 +70,15 @@ function showContentNews() {
     const row = document.createElement("div");
     row.className = "row";
 
-    let id = 0;
-
-    newsData.forEach(item => {
+    newsData.forEach((item, index) => {
         const card = document.createElement('div');
         card.className = 'col-md-4 mb-4';
-        card.id = id++;
         card.innerHTML = `
                     <div class="card h-100">
                         <div class="card-body">
                             <h5>${item.title}</h5>
                             <p class="card-text">${item.text}</p>
-                            <a href="#" class="btn btn-primary">Узнать больше »</a>
+                            <a href="#" class="btn btn-primary" onclick="openNews(${index})">Узнать больше »</a>
                         </div>
                         <div class="card-footer text-muted">
                             ${item.date} ${item.comments}
@@ -99,6 +109,24 @@ function showContentContacts() {
     text.innerHTML = "Контакты"
     content.appendChild(text);
 }
+
+/*----------Ищем страницы с новостями----------*/
+
+function searchNews(index){
+    const content = document.getElementById("content");
+    const news = newsData[index]
+
+    content.innerHTML = `
+        <section class="container">
+        <button class="btn btn-primary" onclick="goToPageNews()"><-Назад к новостям</button>
+        <h1>${news.title}</h1>
+        <p class="text-muted">${news.date}</p>
+        <p>${news.text}</p>
+        </section>`
+        ;
+}
+
+/*----------Ищем страницы с новостями----------*/
 
 window.onpopstate = function (event){
     if (event.state && event.state.page) {
