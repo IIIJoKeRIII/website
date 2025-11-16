@@ -44,9 +44,6 @@ function showPages(pageName){
         case "contacts":
             showContentContacts()
             break;
-        case "index-news":
-            showContentContacts()
-            break;
         case "error":
             document.getElementById("content").innerHTML = "<h1 class='text-center'> Такой страницы нет :(";
     }
@@ -153,6 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         else if (pageShow == 'services') {
             goToPageServices();
+        }
+        else if (pageShow >= 0) {
+            goToIndexNews(Number(pageShow));
         }
         else{
             goToErrorPage();
