@@ -104,7 +104,7 @@ function showContentContacts() {
     content.appendChild(text);
 }
 
-/*----------Ищем страницы с новостями----------*/
+/*----------Выводим новость по индексу----------*/
 
 function searchNews(index){
     const content = document.getElementById("content");
@@ -121,7 +121,7 @@ function searchNews(index){
         ;
 }
 
-/*----------Ищем страницы с новостями----------*/
+/*----------Превращаем 404 в нормальную страницу----------*/
 
 window.onpopstate = function (event){
     if (event.state && event.state.page) {
