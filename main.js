@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (pageShow == 'services') {
             goToPageServices();
         }
-        else if (pageShow >= 0 && pageShow <= news.length) {
+        else if (pageShow >= 0) {
             goToIndexNews(Number(pageShow));
         }
         else{
