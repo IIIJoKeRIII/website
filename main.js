@@ -75,7 +75,7 @@ function showContentNews() {
                             <a href="" class="btn btn-primary" onclick="goToIndexNews(${index})">Узнать больше »</a>
                         </div>
                         <div class="card-footer text-muted">
-                            ${item.date} ${item.comments}
+                            ${item.date} ${item.comments.length === 0 ? "Комментариев нет" : "Количество комментариев: " + item.comments.length}
                         </div>
                     </div>
                 `;
