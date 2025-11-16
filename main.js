@@ -113,7 +113,7 @@ function searchNews(index){
 
     content.innerHTML = `
         <section class="container">
-        <button class="btn btn-primary" onclick="goToPageNews()"><-Назад к новостям</button>
+        <button class="btn btn-primary" onclick="goToPageNews()" style="margin-top: 1.5em"><-Назад к новостям</button>
         <h1>${news.title}</h1>
         <p class="text-muted">${news.date}</p>
         <p>${news.text}</p>
