@@ -118,7 +118,7 @@ function searchNews(index){
         <p>${news.text}</p>
         <p>${news.fullText}</p>
         </section>
-        <section class="container">
+        <section class="container fixed-bottom">
         <p class="text-muted">Комментарии: </p> 
         </section>
         `
