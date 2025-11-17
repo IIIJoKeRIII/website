@@ -21,7 +21,7 @@ function goToStartPage(){
 }
 
 function goToIDNews(id){
-    history.pushState({page: "id-news"}, ``, `${basePath}news/${index}`);
+    history.pushState({page: "id-news"}, ``, `${basePath}news/${id}`);
     searchNews(id)
 }
 
