@@ -20,9 +20,9 @@ function goToStartPage(){
     showPages("news")
 }
 
-function goToIndexNews(index){
-    history.pushState({page: "index-news"}, ``, `${basePath}news/${index}`);
-    searchNews(index)
+function goToIDNews(id){
+    history.pushState({page: "id-news"}, ``, `${basePath}news/${index}`);
+    searchNews(id)
 }
 
 function goToErrorPage(){
@@ -64,7 +64,7 @@ function showContentNews() {
 
     const row = document.createElement("div");
     row.className = "row";
-    newsData.forEach((item, index) => {
+    newsData.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'col-md-4 mb-4';
         card.innerHTML = `
@@ -72,7 +72,7 @@ function showContentNews() {
                         <div class="card-body">
                             <h5>${item.title}</h5>
                             <p class="card-text">${item.text}</p>
-                            <a href="" class="btn btn-primary" onclick="goToIndexNews(${index})">Узнать больше »</a>
+                            <a href="" class="btn btn-primary" onclick="goToIDNews(${item.id})">Узнать больше »</a>
                         </div>
                         <div class="card-footer text-muted">
                             ${item.date} ${item.comments.length === 0 ? "Комментариев нет" : "Количество комментариев: " + item.comments.length}
@@ -106,9 +106,9 @@ function showContentContacts() {
 
 /*----------Выводим новость по индексу----------*/
 
-function searchNews(index){
+function searchNews(id){
     const content = document.getElementById("content");
-    const news = newsData[index]
+    const news = newsData.find(item => item.id === id);
 
     content.innerHTML = `
         <section class="container">
@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (pageShow == 'services') {
             goToPageServices();
         }
-        else if (pageShow >= 0) {
-            goToIndexNews(Number(pageShow));
+        else if (pageShow >= 1) {
+            goToIDNews(Number(pageShow));
         }
         else{
             goToErrorPage();
