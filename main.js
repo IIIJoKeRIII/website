@@ -126,9 +126,30 @@ function searchNews(id){
         <textarea id="comment" placeholder="Напишите что думаете, здесь пока можно"></textarea><br>
         <button class="btn btn-primary" onclick="addComment(${news.id})">Отправить</button>
         </div>
+        <div id="comments">
+        ${news.comments.map(comment =>`
+              <p><b>${comment.author}:</b>${comment.text}</p>
+        `).join("\n")}      
+        </div>
         </section>
         `
         ;
+}
+/*-----------Добавляем комментарий на страницу------------*/
+
+function addComment(newsId){
+    const news = newsData.find(item => item.id === newsId);
+    const author = document.getElementById("author");
+    const comment = document.getElementById("comment");
+
+    const commentsNews = {
+        author: author,
+        comment: comment,
+        date: new Date().toLocaleDateString()
+    }
+
+    news.comments.push(commentsNews);
+    searchNews(newsId);
 }
 
 /*----------Превращаем 404 в нормальную страницу----------*/
