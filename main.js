@@ -1,37 +1,37 @@
 const basePath = "/website/"
 
-function goToPageNews(){
+function goToPageNews() {
     history.pushState({page: "news"}, ``, `${basePath}news`);
     showPages("news")
 }
 
-function goToPageServices(){
+function goToPageServices() {
     history.pushState({page: "services"}, ``, `${basePath}services`);
     showPages("services")
 }
 
-function goToPageContacts(){
+function goToPageContacts() {
     history.pushState({page: "contacts"}, ``, `${basePath}contacts`);
     showPages("contacts")
 }
 
-function goToStartPage(){
+function goToStartPage() {
     history.pushState({page: "news"}, ``, `${basePath}`);
     showPages("news")
 }
 
-function goToIDNews(id){
+function goToIDNews(id) {
     history.pushState({page: "id-news", id: id}, ``, `${basePath}news/${id}`);
     searchNews(id)
 }
 
-function goToErrorPage(){
+function goToErrorPage() {
     showPages("error")
 }
 
-function showPages(pageName){
+function showPages(pageName) {
 
-    switch(pageName){
+    switch (pageName) {
         case "":
             showContentNews()
             break;
@@ -106,7 +106,7 @@ function showContentContacts() {
 
 /*----------Выводим новость по индексу----------*/
 
-function searchNews(id){
+function searchNews(id) {
     const content = document.getElementById("content");
     const news = newsData.find(item => item.id === id);
 
@@ -123,34 +123,47 @@ function searchNews(id){
         <div> 
         <h3>Комментарии: </h3>
         <input id="author" type="text" placeholder="Ваше имя" class="input-author"><br><br>
-        <textarea id="comment" placeholder="Напишите что думаете, здесь пока можно" class="txtarea"></textarea><br>
+        <div class="container">
+
+        <form class="comment-form">
+            <div class="input-wrapper">
+                <textarea class="text-input comment" rows="1" placeholder="Напишите комментарий..."></textarea>
+            </div>
+            <button class="send-btn" type="button">
+                <svg class="send-icon" viewBox="0 0 20 20">
+                    <path
+                        <!-- Нашел стрелочку нарисованную-->
+                        d="M0 20V0m20 0v20M11.884 3.823l5.469 5.47c.391.39.391 1.024 0 1.414l-5.469 5.47c-.195.195-.512.195-.707 0l-.354-.354c-.195-.195-.195-.512 0-.707l4.366-4.366H2.5c-.276 0-.5-.224-.5-.5v-.5c0-.276.224-.5.5-.5h12.689l-4.366-4.366c-.195-.195-.195-.512 0-.707l.354-.354c.195-.195.512-.195.707 0"
+                        fill-rule="evenodd"></path>
+                </svg>
+            </button>
+        </form>
+        </div>
         <button class="btn btn-primary" onclick="addComment(${news.id})">Отправить</button>
         </div>
         <div id="comments">
-        ${news.comments.map(comment =>`
+        ${news.comments.map(comment => `
               <p><b>${comment.author}: </b>${comment.comment}</p>
         `).join("\n")}      
         </div>
         </section>
-        `
-        ;
+        `;
 }
+
 /*-----------Добавляем комментарий на страницу------------*/
 
-function addComment(newsId){
+function addComment(newsId) {
     const news = newsData.find(item => item.id === newsId);
     const author = document.getElementById("author").value;
     const comment = document.getElementById("comment").value;
 
-    if(!author || !comment){
+    if (!author || !comment) {
         alert("Заполните все поля!")
         return;
     }
 
     const commentsNews = {
-        author: author,
-        comment: comment,
-        date: new Date().toLocaleDateString()
+        author: author, comment: comment, date: new Date().toLocaleDateString()
     }
 
     news.comments.push(commentsNews);
@@ -159,9 +172,9 @@ function addComment(newsId){
 
 /*----------Превращаем 404 в нормальную страницу----------*/
 
-window.onpopstate = function (event){
+window.onpopstate = function (event) {
     if (event.state && event.state.page) {
-        if(event.state.page === "id-news"){
+        if (event.state.page === "id-news") {
             searchNews(event.state.id);
         } else {
             showPages(event.state.page);
@@ -173,7 +186,7 @@ window.onpopstate = function (event){
     }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let pageShow;
     if (sessionStorage.redirect) {
         const requestedPath = sessionStorage.redirect;
@@ -184,21 +197,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (pageShow === 'news') {
             goToPageNews();
-        }
-        else if (pageShow ===  'contacts') {
+        } else if (pageShow === 'contacts') {
             goToPageContacts();
-        }
-        else if (pageShow === 'services') {
+        } else if (pageShow === 'services') {
             goToPageServices();
-        }
-        else if (pageShow >= 1 && pageShow <= newsData.length) {
+        } else if (pageShow >= 1 && pageShow <= newsData.length) {
             goToIDNews(Number(pageShow));
-        }
-        else{
+        } else {
             goToErrorPage();
         }
-    }
-    else{
+    } else {
         const pageName = window.location.hash.substring(1);
         showPages(pageName || 'news');
     }
