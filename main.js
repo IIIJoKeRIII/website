@@ -122,13 +122,13 @@ function searchNews(id){
         <!-- ВОТ ТУТ НАЧИНАЮТСЯ КОММЕНТАРИИ -->
         <div> 
         <h3>Комментарии: </h3>
-        <input type="text" placeholder="Ваше имя" id="author"><br><br>
+        <input id="author" type="text" placeholder="Ваше имя"><br><br>
         <textarea id="comment" placeholder="Напишите что думаете, здесь пока можно"></textarea><br>
         <button class="btn btn-primary" onclick="addComment(${news.id})">Отправить</button>
         </div>
         <div id="comments">
         ${news.comments.map(comment =>`
-              <p><b>${comment.author}:</b>${comment.text}</p>
+              <p><b>${comment.author}:</b>${comment.comment}</p>
         `).join("\n")}      
         </div>
         </section>
@@ -139,8 +139,8 @@ function searchNews(id){
 
 function addComment(newsId){
     const news = newsData.find(item => item.id === newsId);
-    const author = document.getElementById("author");
-    const comment = document.getElementById("comment");
+    const author = document.getElementById("author").value;
+    const comment = document.getElementById("comment").value;
 
     const commentsNews = {
         author: author,
