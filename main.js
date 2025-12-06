@@ -119,7 +119,13 @@ function searchNews(id){
         <p>${news.fullText}</p>
         </section>
         <section class="container fixed-bottom">
-        <p class="text-muted">Комментарии: </p> 
+        <!-- ВОТ ТУТ НАЧИНАЮТСЯ КОММЕНТАРИИ -->
+        <div> 
+        <h3>Комментарии: </h3>
+        <input type="text" placeholder="Ваше имя" id="author"><br><br>
+        <textarea id="comment" placeholder="Напишите что думаете, здесь пока можно"></textarea><br>
+        <button class="btn btn-primary" onclick="addComment(${news.id})">Отправить</button>
+        </div>
         </section>
         `
         ;
