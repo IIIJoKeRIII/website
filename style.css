@@ -1,27 +1,68 @@
-/* Основная форма */
-.comment-form {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    background: white;
-    border-radius: 8px;
+/* Общие стили для всех полей ввода */
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 15px;
+    border-radius: 20px;
+    color: #050505;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    border: none;
 }
 
-/* Поле ввода */
-.input-wrapper {
+/* Плейсхолдер для всех полей */
+.input-field::placeholder {
+    color: #65676b;
+    opacity: 0.7;
+}
+
+/* Контейнер для поля ввода */
+.input-container {
+    position: relative;
     flex: 1;
     background: #f0f2f5;
     border-radius: 20px;
     padding: 10px 15px;
-    position: relative;
 }
 
-.input-wrapper:focus-within {
+.input-container:focus-within {
     background: #e4e6eb;
 }
 
-/* Плейсхолдер сверху */
-.placeholder-text {
+/* Поле для имени автора */
+.input-author {
+    max-width: 300px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+.input-author:focus {
+    border-color: #0084ff;
+    background: white;
+    box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.1);
+}
+
+.input-author:hover {
+    border-color: #bbb;
+    background: #f0f2f5;
+}
+
+.input-author:not(:placeholder-shown) {
+    background: white;
+}
+
+/* Поле для текста комментария */
+.comment-input {
+    background: transparent;
+    resize: none;
+    height: 20px;
+    min-height: 20px;
+    max-height: 200px;
+}
+
+/* Плейсхолдер сверху (скрытый) */
+.hidden-placeholder {
     position: absolute;
     top: 10px;
     left: 15px;
@@ -30,32 +71,22 @@
     pointer-events: none;
 }
 
-/* Когда пишем - скрываем плейсхолдер */
-.text-input:focus + .placeholder-text,
-.text-input:not(:empty) + .placeholder-text {
+.comment-input:focus + .hidden-placeholder,
+.comment-input:not(:empty) + .hidden-placeholder {
     opacity: 0;
 }
 
-/* Само поле ввода */
-.text-input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    font-size: 15px;
-    color: #050505;
-    outline: none;
-    resize: none;
-    height: 20px;
-    min-height: 20px;
-    max-height: 200px;
-}
-
-.text-input::placeholder {
-    color: #65676b;
+/* Форма комментария */
+.comment-form {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
 }
 
 /* Кнопка отправки */
-.send-btn {
+.send-button {
     width: 40px;
     height: 40px;
     border: none;
@@ -66,59 +97,21 @@
     align-items: center;
     justify-content: center;
     color: white;
+    transition: all 0.2s;
 }
 
-.send-btn:hover {
+.send-button:hover {
     background: #0073e6;
 }
 
-.send-btn:active {
+.send-button:active {
     background: #0062cc;
     transform: scale(0.95);
 }
 
 /* Иконка внутри кнопки */
-.send-icon {
+.button-icon {
     width: 20px;
     height: 20px;
     fill: currentColor;
-}
-
-/*-------Поле для имени автора-------*/
-.input-author {
-    width: 100%;
-    max-width: 300px;
-    padding: 12px 15px;
-    font-size: 15px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    background: #f8f9fa;
-    color: #050505;
-    outline: none;
-    transition: all 0.2s;
-    box-sizing: border-box;
-}
-
-/* При фокусе */
-.input-author:focus {
-    border-color: #0084ff;
-    background: white;
-    box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.1);
-}
-
-/* При наведении */
-.input-author:hover {
-    border-color: #bbb;
-    background: #f0f2f5;
-}
-
-/* Плейсхолдер */
-.input-author::placeholder {
-    color: #65676b;
-    opacity: 0.7;
-}
-
-/* Если поле активно (заполнено) */
-.input-author:not(:placeholder-shown) {
-    background: white;
 }
