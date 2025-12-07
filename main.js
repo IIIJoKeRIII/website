@@ -110,13 +110,16 @@ function searchNews(id) {
     const content = document.getElementById("content");
     const news = newsData.find(item => item.id === id);
 
+    let filterComment = news.comments.filter(comment =>
+    comment.author && comment.author.trim() !== '' && comment.comment && comment.comment.trim() !== '')
+
     let commentHTML = ''
     if(news.comments.length > 1) {
-        commentHTML = news.comments.map(comment => `
+        commentHTML = filterComment.map(comment => `
             <div id="comments">
               <p><b>${comment.author}: </b>${comment.comment}</p>
             </div>
-        }`).join("");
+        `).join("");
     } else{
         commentHTML = '<p>Здесь пока нет комментариев. Будь первым, кто оставит комментарий!</p>';
     }
@@ -134,7 +137,7 @@ function searchNews(id) {
         <h3>Комментарии: </h3>
         <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Автор</label>
-                <input type="email" class="form-control height-form-author" id="author" placeholder="Имя автора">
+                <input type="text" class="form-control height-form-author" id="author" placeholder="Имя автора">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Текст комментария</label>
