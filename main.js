@@ -53,7 +53,7 @@ function showPages(pageName) {
 
 
 function showContentNews() {
-    loadComments()
+    loadComments();
     const content = document.getElementById("content");
     content.innerHTML = "";
     const newsSection = document.createElement("section");
@@ -109,6 +109,7 @@ function showContentContacts() {
 /*----------Выводим новость по индексу----------*/
 
 function searchNews(id) {
+    loadComments();
     const content = document.getElementById("content");
     const news = newsData.find(item => item.id === id);
 
