@@ -122,20 +122,15 @@ function searchNews(id) {
         <!-- ВОТ ТУТ НАЧИНАЮТСЯ КОММЕНТАРИИ -->
         <div> 
         <h3>Комментарии: </h3>
-        <input id="author" type="text" placeholder="Ваше имя" class="input-field input-author">
-        <div class="container">
-
-        <form class="comment-form">
-          <div class="input-container">
-            <textarea id="comment" class="input-field comment-input" rows="1" placeholder="Напишите комментарий..."></textarea>
-          </div>
-          <button class="send-button" type="button">
-            <svg class="button-icon" viewBox="0 0 20 20">
-              <path d="M0 20V0m20 0v20M11.884 3.823l5.469 5.47c.391.39.391 1.024 0 1.414l-5.469 5.47c-.195.195-.512.195-.707 0l-.354-.354c-.195-.195-.195-.512 0-.707l4.366-4.366H2.5c-.276 0-.5-.224-.5-.5v-.5c0-.276.224-.5.5-.5h12.689l-4.366-4.366c-.195-.195-.195-.512 0-.707l.354-.354c.195-.195.512-.195.707 0" fill-rule="evenodd"></path>
-            </svg>
-          </button>
-        </form>
-        </div>
+        <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Автор</label>
+                <input type="email" class="form-control height-form-author" id="author" placeholder="Имя автора">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Текст комментария</label>
+                <textarea class="form-control" id="comment" rows="3" placeholder="Напишите свой комментрий..."></textarea>
+            </div>
+        <div>
         <button class="btn btn-primary" onclick="addComment(${news.id})">Отправить</button>
         </div>
         <div id="comments">
