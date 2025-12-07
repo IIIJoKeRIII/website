@@ -110,6 +110,16 @@ function searchNews(id) {
     const content = document.getElementById("content");
     const news = newsData.find(item => item.id === id);
 
+    let commentHTML = ''
+    if(news.comments.length > 0) {
+        commentHTML = news.comments.map(comment => `
+            <div id="comments">
+              <p><b>${comment.author}: </b>${comment.comment}</p>
+            </div>
+        }`).join("");
+    } else{
+        commentHTML = '<p>Здесь пока нет комментариев. Будь первым, кто оставит комментарий!</p>';
+    }
     content.innerHTML = `
         <section class="container">
         <button class="btn btn-primary" onclick="goToPageNews()" style="margin-top: 1.5em">Назад к новостям</button>
@@ -134,9 +144,7 @@ function searchNews(id) {
         <button class="btn btn-primary" onclick="addComment(${news.id})">Отправить</button>
         </div>
         <div id="comments">
-        ${news.comments.map(comment => `
-              <p><b>${comment.author}: </b>${comment.comment}</p>
-        `).join("\n")}      
+        ${commentHTML}   
         </div>
         </section>
         `;
