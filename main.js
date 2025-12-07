@@ -1,3 +1,4 @@
+loadComments()
 const basePath = "/website/"
 
 function goToPageNews() {
@@ -153,7 +154,18 @@ function searchNews(id) {
         `;
 }
 
-/*-----------Добавляем комментарий на страницу------------*/
+/*-----------Работа с комментариями------------*/
+
+function saveComments() {
+    localStorage.setItem(`allNewsData`, JSON.stringify(newsData));
+}
+
+function loadComments(){
+    const saved = localStorage.getItem(`allNewsData`);
+    if(saved){
+        Object.assign(newsData, JSON.parse(saved));
+    }
+}
 
 function addComment(newsId) {
     const news = newsData.find(item => item.id === newsId);
@@ -170,6 +182,7 @@ function addComment(newsId) {
     }
 
     news.comments.push(commentsNews);
+    saveComments()
     searchNews(newsId);
 }
 
