@@ -1,4 +1,3 @@
-loadComments()
 const basePath = "/website/"
 
 function goToPageNews() {
@@ -108,6 +107,7 @@ function showContentContacts() {
 /*----------Выводим новость по индексу----------*/
 
 function searchNews(id) {
+    loadComments()
     const content = document.getElementById("content");
     const news = newsData.find(item => item.id === id);
 
