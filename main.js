@@ -118,7 +118,7 @@ function searchNews(id) {
         <p>${news.text}</p>
         <p>${news.fullText}</p>
         </section>
-        <section class="container fixed-bottom">
+        <section class="container">
         <!-- ВОТ ТУТ НАЧИНАЮТСЯ КОММЕНТАРИИ -->
         <div> 
         <h3>Комментарии: </h3>
