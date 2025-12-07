@@ -51,6 +51,7 @@ function showPages(pageName) {
 
 /*----------Генерируем страницы Новости, контакты, услуги----------*/
 
+loadComments()
 function showContentNews() {
     const content = document.getElementById("content");
     content.innerHTML = "";
@@ -107,7 +108,6 @@ function showContentContacts() {
 /*----------Выводим новость по индексу----------*/
 
 function searchNews(id) {
-    loadComments()
     const content = document.getElementById("content");
     const news = newsData.find(item => item.id === id);
 
