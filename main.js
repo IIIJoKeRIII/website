@@ -75,7 +75,7 @@ function showContentNews() {
                             <a href="" class="btn btn-primary" onclick="goToIDNews(${item.id})">Узнать больше »</a>
                         </div>
                         <div class="card-footer text-muted">
-                            ${item.date} ${item.comments.length === 0 ? "Комментариев нет" : "Количество комментариев: " + item.comments.length}
+                            ${item.date} ${item.comments.length === 1 ? "Комментариев нет" : "Количество комментариев: " + item.comments.length}
                         </div>
                     </div>
                 `;
@@ -111,7 +111,7 @@ function searchNews(id) {
     const news = newsData.find(item => item.id === id);
 
     let commentHTML = ''
-    if(news.comments.length > 0) {
+    if(news.comments.length > 1) {
         commentHTML = news.comments.map(comment => `
             <div id="comments">
               <p><b>${comment.author}: </b>${comment.comment}</p>
