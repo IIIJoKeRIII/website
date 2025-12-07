@@ -51,8 +51,9 @@ function showPages(pageName) {
 
 /*----------Генерируем страницы Новости, контакты, услуги----------*/
 
-loadComments()
+
 function showContentNews() {
+    loadComments()
     const content = document.getElementById("content");
     content.innerHTML = "";
     const newsSection = document.createElement("section");
